@@ -7,7 +7,7 @@ export const Route = createFileRoute("/contact")({
   head: () => ({
     meta: [
       { title: "Contact Tospas — Request a Quote in 2 Hours" },
-      { name: "description", content: "Get in touch with Tospas. Tell us about your cargo and we'll respond within 2 hours. Skopje HQ, +389 2 200 0000, info@tospas.com." },
+      { name: "description", content: "Get in touch with Tospas. Tell us about your cargo and we'll respond within 2 hours. Skopje HQ, +389 2 200 0000, jordangrkov9@gmail.com." },
       { property: "og:title", content: "Contact Tospas" },
       { property: "og:description", content: "Let's plan your next shipment." },
     ],
@@ -31,7 +31,7 @@ function ContactPage() {
     const body = encodeURIComponent(
       `Name: ${name}\nEmail: ${email}\nPhone: ${phone}\n\nMessage:\n${message}`
     );
-    window.location.href = `mailto:info@tospas.com?subject=${encodeURIComponent(subject)}&body=${body}`;
+    window.location.href = `mailto:jordangrkov9@gmail.com?subject=${encodeURIComponent(subject)}&body=${body}`;
     setSubmitted(true);
   }
 
@@ -100,7 +100,7 @@ function ContactPage() {
                   </li>
                   <li className="flex items-center gap-3">
                     <Mail className="h-5 w-5 text-orange flex-shrink-0" />
-                    <a href="mailto:info@tospas.com" className="text-white/90 hover:text-orange transition-colors">info@tospas.com</a>
+                    <a href="mailto:jordangrkov9@gmail.com" className="text-white/90 hover:text-orange transition-colors">jordangrkov9@gmail.com</a>
                   </li>
                 </ul>
                 <div className="mt-7 border-t border-white/15 pt-5 text-sm text-white/70">

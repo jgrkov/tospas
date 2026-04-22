@@ -39,7 +39,7 @@ export function Footer() {
             <ul className="mt-4 space-y-3 text-sm text-white/70">
               <li className="flex items-start gap-2.5"><MapPin className="h-4 w-4 mt-0.5 text-orange flex-shrink-0" /><span>{t("contact.info.address")}</span></li>
               <li className="flex items-center gap-2.5"><Phone className="h-4 w-4 text-orange flex-shrink-0" /><a href="tel:+38922000000" className="hover:text-orange transition-colors">+389 2 200 0000</a></li>
-              <li className="flex items-center gap-2.5"><Mail className="h-4 w-4 text-orange flex-shrink-0" /><a href="mailto:info@tospas.com" className="hover:text-orange transition-colors">info@tospas.com</a></li>
+              <li className="flex items-center gap-2.5"><Mail className="h-4 w-4 text-orange flex-shrink-0" /><a href="mailto:jordangrkov9@gmail.com" className="hover:text-orange transition-colors">jordangrkov9@gmail.com</a></li>
             </ul>
           </div>
 
