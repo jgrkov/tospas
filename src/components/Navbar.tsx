@@ -1,4 +1,4 @@
-import { Link } from "@tanstack/react-router";
+import { NavLink, Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
 import { Logo } from "./Logo";
@@ -23,7 +23,7 @@ export function Navbar() {
     { to: "/services", label: t("nav.services") },
     { to: "/fleet", label: t("nav.fleet") },
     { to: "/contact", label: t("nav.contact") },
-  ] as const;
+  ];
 
   return (
     <header
@@ -34,19 +34,22 @@ export function Navbar() {
       }`}
     >
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 sm:px-6 py-3">
-        <Logo variant={scrolled ? "dark" : "dark"} />
+        <Logo />
 
         <nav className="hidden lg:flex items-center gap-1">
           {links.map((l) => (
-            <Link
+            <NavLink
               key={l.to}
               to={l.to}
-              className="px-3 py-2 text-sm font-medium text-navy/80 hover:text-navy transition-colors rounded-md"
-              activeProps={{ className: "px-3 py-2 text-sm font-semibold text-orange rounded-md" }}
-              activeOptions={{ exact: l.to === "/" }}
+              end={l.to === "/"}
+              className={({ isActive }) =>
+                isActive
+                  ? "px-3 py-2 text-sm font-semibold text-orange rounded-md"
+                  : "px-3 py-2 text-sm font-medium text-navy/80 hover:text-navy transition-colors rounded-md"
+              }
             >
               {l.label}
-            </Link>
+            </NavLink>
           ))}
         </nav>
 
@@ -72,16 +75,19 @@ export function Navbar() {
         <div className="lg:hidden border-t border-border bg-background animate-fade-in">
           <nav className="mx-auto flex max-w-7xl flex-col px-4 py-3 gap-1">
             {links.map((l) => (
-              <Link
+              <NavLink
                 key={l.to}
                 to={l.to}
+                end={l.to === "/"}
                 onClick={() => setOpen(false)}
-                className="px-3 py-2.5 text-base font-medium text-navy hover:bg-muted rounded-md"
-                activeProps={{ className: "px-3 py-2.5 text-base font-semibold text-orange bg-muted rounded-md" }}
-                activeOptions={{ exact: l.to === "/" }}
+                className={({ isActive }) =>
+                  isActive
+                    ? "px-3 py-2.5 text-base font-semibold text-orange bg-muted rounded-md"
+                    : "px-3 py-2.5 text-base font-medium text-navy hover:bg-muted rounded-md"
+                }
               >
                 {l.label}
-              </Link>
+              </NavLink>
             ))}
             <Link
               to="/contact"
