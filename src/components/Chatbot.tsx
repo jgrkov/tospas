@@ -5,7 +5,7 @@ import type { Lang } from "@/i18n/translations";
 
 type Msg = { role: "user" | "bot"; content: string; cta?: { type: "email" | "quote"; label: string } };
 
-const COMPANY_EMAIL = "info@tospas.com";
+const COMPANY_EMAIL = "jordangrkov9@gmail.com";
 
 // Multilingual keyword → answer lookup
 const KB: Record<Lang, Array<{ keys: string[]; answer: string; cta?: { type: "email" | "quote"; label: string } }>> = {
