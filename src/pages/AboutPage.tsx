@@ -1,21 +1,9 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { Link } from "react-router-dom";
 import { ArrowRight, ShieldCheck, Eye, Heart } from "lucide-react";
 import { useLanguage } from "@/i18n/LanguageContext";
 import aboutImg from "@/assets/about-fleet.jpg";
 
-export const Route = createFileRoute("/about")({
-  head: () => ({
-    meta: [
-      { title: "About Tospas — Built on Trust, Driven by Precision" },
-      { name: "description", content: "For 15+ years Tospas has delivered freight across Europe with a single principle: every shipment matters. Discover our story, mission and values." },
-      { property: "og:title", content: "About Tospas" },
-      { property: "og:description", content: "Built on trust. Driven by precision." },
-    ],
-  }),
-  component: AboutPage,
-});
-
-function AboutPage() {
+export default function AboutPage() {
   const { t } = useLanguage();
 
   const values = [
@@ -26,7 +14,6 @@ function AboutPage() {
 
   return (
     <>
-      {/* Hero */}
       <section className="relative isolate overflow-hidden bg-navy-deep pt-32 pb-16 sm:pt-40 sm:pb-24">
         <div className="absolute inset-0 opacity-40">
           <img src={aboutImg} alt="" className="h-full w-full object-cover" loading="lazy" />
@@ -39,7 +26,6 @@ function AboutPage() {
         </div>
       </section>
 
-      {/* Story */}
       <section className="py-20 sm:py-28">
         <div className="mx-auto max-w-4xl px-4 sm:px-6">
           <h2 className="font-display text-3xl font-bold text-navy sm:text-4xl">{t("about.story.title")}</h2>
@@ -58,7 +44,6 @@ function AboutPage() {
         </div>
       </section>
 
-      {/* Values */}
       <section className="bg-muted/40 py-20 sm:py-28">
         <div className="mx-auto max-w-7xl px-4 sm:px-6">
           <h2 className="text-center font-display text-3xl font-bold text-navy sm:text-4xl">{t("about.values.title")}</h2>
@@ -75,10 +60,7 @@ function AboutPage() {
           </div>
 
           <div className="mt-16 text-center">
-            <Link
-              to="/contact"
-              className="inline-flex items-center gap-2 rounded-md bg-navy px-6 py-3.5 text-sm font-semibold text-white shadow-card hover:bg-navy-deep transition-colors"
-            >
+            <Link to="/contact" className="inline-flex items-center gap-2 rounded-md bg-navy px-6 py-3.5 text-sm font-semibold text-white shadow-card hover:bg-navy-deep transition-colors">
               {t("hero.cta_quote")} <ArrowRight className="h-4 w-4" />
             </Link>
           </div>

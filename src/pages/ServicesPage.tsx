@@ -1,48 +1,16 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { Link } from "react-router-dom";
 import { ArrowRight, Globe2, Truck, Zap, Settings, CheckCircle2 } from "lucide-react";
 import { useLanguage } from "@/i18n/LanguageContext";
 import warehouseImg from "@/assets/services-warehouse.jpg";
 
-export const Route = createFileRoute("/services")({
-  head: () => ({
-    meta: [
-      { title: "Services — International Transport & Logistics | Tospas" },
-      { name: "description", content: "International transport, logistics solutions, express delivery and custom transport services across 27 European countries." },
-      { property: "og:title", content: "Tospas Services" },
-      { property: "og:description", content: "End-to-end logistics, built for European trade." },
-    ],
-  }),
-  component: ServicesPage,
-});
-
-function ServicesPage() {
+export default function ServicesPage() {
   const { t } = useLanguage();
 
   const services = [
-    {
-      icon: Globe2,
-      title: t("services.intl.title"),
-      desc: t("services.intl.desc"),
-      bullets: ["EU & Balkans coverage", "Full CMR documentation", "Real-time GPS tracking"],
-    },
-    {
-      icon: Truck,
-      title: t("services.logistics.title"),
-      desc: t("services.logistics.desc"),
-      bullets: ["Warehousing & distribution", "Cross-docking", "Inventory management"],
-    },
-    {
-      icon: Zap,
-      title: t("services.express.title"),
-      desc: t("services.express.desc"),
-      bullets: ["Dedicated vehicles", "24/7 dispatch", "Direct point-to-point"],
-    },
-    {
-      icon: Settings,
-      title: t("services.custom.title"),
-      desc: t("services.custom.desc"),
-      bullets: ["Refrigerated transport", "ADR hazardous materials", "Oversized cargo"],
-    },
+    { icon: Globe2, title: t("services.intl.title"), desc: t("services.intl.desc"), bullets: ["EU & Balkans coverage", "Full CMR documentation", "Real-time GPS tracking"] },
+    { icon: Truck, title: t("services.logistics.title"), desc: t("services.logistics.desc"), bullets: ["Warehousing & distribution", "Cross-docking", "Inventory management"] },
+    { icon: Zap, title: t("services.express.title"), desc: t("services.express.desc"), bullets: ["Dedicated vehicles", "24/7 dispatch", "Direct point-to-point"] },
+    { icon: Settings, title: t("services.custom.title"), desc: t("services.custom.desc"), bullets: ["Refrigerated transport", "ADR hazardous materials", "Oversized cargo"] },
   ];
 
   return (
@@ -85,10 +53,7 @@ function ServicesPage() {
           </div>
 
           <div className="mt-16 text-center">
-            <Link
-              to="/contact"
-              className="inline-flex items-center gap-2 rounded-md bg-orange-gradient px-7 py-4 text-base font-semibold text-white shadow-glow hover:opacity-95 transition-opacity"
-            >
+            <Link to="/contact" className="inline-flex items-center gap-2 rounded-md bg-orange-gradient px-7 py-4 text-base font-semibold text-white shadow-glow hover:opacity-95 transition-opacity">
               {t("services.page.cta")} <ArrowRight className="h-5 w-5" />
             </Link>
           </div>

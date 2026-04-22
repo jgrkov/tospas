@@ -1,22 +1,10 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { Link } from "react-router-dom";
 import { ArrowRight, Truck, Globe2, Zap, Settings, ShieldCheck, Clock, UserCheck, FileCheck, Quote, Star } from "lucide-react";
 import { useLanguage } from "@/i18n/LanguageContext";
 import heroImg from "@/assets/hero-truck.jpg";
 import aboutImg from "@/assets/about-fleet.jpg";
 
-export const Route = createFileRoute("/")({
-  head: () => ({
-    meta: [
-      { title: "Tospas — International Transport You Can Trust" },
-      { name: "description", content: "Fast, secure and reliable logistics across 27 European countries. Modern Euro 6 fleet, GPS tracking, dedicated account managers." },
-      { property: "og:title", content: "Tospas — International Transport You Can Trust" },
-      { property: "og:description", content: "Fast, secure and reliable logistics across Europe." },
-    ],
-  }),
-  component: HomePage,
-});
-
-function HomePage() {
+export default function HomePage() {
   const { t } = useLanguage();
 
   const services = [
@@ -48,16 +36,9 @@ function HomePage() {
 
   return (
     <>
-      {/* HERO */}
       <section className="relative isolate overflow-hidden bg-navy-deep">
         <div className="absolute inset-0">
-          <img
-            src={heroImg}
-            alt="Tospas semi-truck on European highway at sunset"
-            width={1920}
-            height={1080}
-            className="h-full w-full object-cover opacity-60"
-          />
+          <img src={heroImg} alt="Tospas semi-truck on European highway at sunset" width={1920} height={1080} className="h-full w-full object-cover opacity-60" />
           <div className="absolute inset-0 bg-overlay-gradient" />
           <div className="absolute inset-0 bg-gradient-to-r from-navy-deep/90 via-navy-deep/40 to-transparent" />
         </div>
@@ -71,27 +52,18 @@ function HomePage() {
             <h1 className="mt-6 font-display text-4xl font-bold leading-[1.05] tracking-tight text-white text-balance sm:text-6xl lg:text-7xl">
               {t("hero.title")}
             </h1>
-            <p className="mt-6 max-w-xl text-lg text-white/80 text-pretty leading-relaxed">
-              {t("hero.subtitle")}
-            </p>
+            <p className="mt-6 max-w-xl text-lg text-white/80 text-pretty leading-relaxed">{t("hero.subtitle")}</p>
             <div className="mt-10 flex flex-wrap gap-3">
-              <Link
-                to="/contact"
-                className="inline-flex items-center gap-2 rounded-md bg-orange-gradient px-6 py-3.5 text-sm font-semibold text-white shadow-glow hover:opacity-95 transition-opacity"
-              >
+              <Link to="/contact" className="inline-flex items-center gap-2 rounded-md bg-orange-gradient px-6 py-3.5 text-sm font-semibold text-white shadow-glow hover:opacity-95 transition-opacity">
                 {t("hero.cta_quote")} <ArrowRight className="h-4 w-4" />
               </Link>
-              <Link
-                to="/contact"
-                className="inline-flex items-center gap-2 rounded-md border border-white/30 bg-white/5 px-6 py-3.5 text-sm font-semibold text-white backdrop-blur hover:bg-white/10 transition-colors"
-              >
+              <Link to="/contact" className="inline-flex items-center gap-2 rounded-md border border-white/30 bg-white/5 px-6 py-3.5 text-sm font-semibold text-white backdrop-blur hover:bg-white/10 transition-colors">
                 {t("hero.cta_contact")}
               </Link>
             </div>
           </div>
         </div>
 
-        {/* Stats strip */}
         <div className="relative border-t border-white/10 bg-navy-deep/80 backdrop-blur">
           <div className="mx-auto grid max-w-7xl grid-cols-2 gap-px bg-white/10 px-4 sm:px-6 md:grid-cols-4">
             {stats.map((s, i) => (
@@ -104,7 +76,6 @@ function HomePage() {
         </div>
       </section>
 
-      {/* SERVICES */}
       <section className="py-20 sm:py-28">
         <div className="mx-auto max-w-7xl px-4 sm:px-6">
           <div className="mx-auto max-w-2xl text-center">
@@ -115,10 +86,7 @@ function HomePage() {
 
           <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {services.map((s, i) => (
-              <div
-                key={i}
-                className="group relative overflow-hidden rounded-2xl border border-border bg-card p-7 shadow-card transition-all hover:-translate-y-1 hover:shadow-elegant"
-              >
+              <div key={i} className="group relative overflow-hidden rounded-2xl border border-border bg-card p-7 shadow-card transition-all hover:-translate-y-1 hover:shadow-elegant">
                 <div className="absolute -right-12 -top-12 h-32 w-32 rounded-full bg-orange/5 transition-transform group-hover:scale-125" />
                 <div className="relative">
                   <span className="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-navy text-white shadow-card">
@@ -126,10 +94,7 @@ function HomePage() {
                   </span>
                   <h3 className="mt-5 text-xl font-semibold text-navy">{s.title}</h3>
                   <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{s.desc}</p>
-                  <Link
-                    to="/services"
-                    className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-orange hover:gap-2.5 transition-all"
-                  >
+                  <Link to="/services" className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-orange hover:gap-2.5 transition-all">
                     {t("services.cta")} <ArrowRight className="h-3.5 w-3.5" />
                   </Link>
                 </div>
@@ -139,19 +104,11 @@ function HomePage() {
         </div>
       </section>
 
-      {/* WHY US */}
       <section className="bg-muted/40 py-20 sm:py-28">
         <div className="mx-auto max-w-7xl px-4 sm:px-6">
           <div className="grid gap-12 lg:grid-cols-2 lg:gap-16 items-center">
             <div className="relative">
-              <img
-                src={aboutImg}
-                alt="Tospas truck convoy on mountain highway"
-                width={1600}
-                height={1000}
-                loading="lazy"
-                className="rounded-2xl shadow-elegant w-full"
-              />
+              <img src={aboutImg} alt="Tospas truck convoy on mountain highway" width={1600} height={1000} loading="lazy" className="rounded-2xl shadow-elegant w-full" />
               <div className="absolute -bottom-6 -right-6 hidden md:flex h-32 w-32 flex-col items-center justify-center rounded-2xl bg-orange-gradient text-white shadow-glow">
                 <span className="font-display text-3xl font-bold">98.6%</span>
                 <span className="text-xs uppercase tracking-wider">on-time</span>
@@ -178,7 +135,6 @@ function HomePage() {
         </div>
       </section>
 
-      {/* TESTIMONIALS */}
       <section className="py-20 sm:py-28">
         <div className="mx-auto max-w-7xl px-4 sm:px-6">
           <div className="mx-auto max-w-2xl text-center">
@@ -186,10 +142,7 @@ function HomePage() {
           </div>
           <div className="mt-14 grid gap-6 md:grid-cols-3">
             {testimonials.map((tm, i) => (
-              <figure
-                key={i}
-                className="relative rounded-2xl border border-border bg-card p-7 shadow-card"
-              >
+              <figure key={i} className="relative rounded-2xl border border-border bg-card p-7 shadow-card">
                 <Quote className="h-7 w-7 text-orange/30" />
                 <blockquote className="mt-3 text-base leading-relaxed text-foreground">"{tm.quote}"</blockquote>
                 <div className="mt-5 flex gap-0.5">
@@ -207,7 +160,6 @@ function HomePage() {
         </div>
       </section>
 
-      {/* CTA */}
       <section className="relative isolate overflow-hidden bg-hero-gradient py-20">
         <div className="absolute inset-0 opacity-30">
           <div className="absolute -top-40 left-1/2 h-80 w-80 -translate-x-1/2 rounded-full bg-orange blur-3xl" />
@@ -216,10 +168,7 @@ function HomePage() {
           <ShieldCheck className="mx-auto h-12 w-12 text-orange" />
           <h2 className="mt-5 font-display text-3xl font-bold text-white sm:text-5xl text-balance">{t("cta.title")}</h2>
           <p className="mt-4 text-lg text-white/80">{t("cta.subtitle")}</p>
-          <Link
-            to="/contact"
-            className="mt-8 inline-flex items-center gap-2 rounded-md bg-orange-gradient px-7 py-4 text-base font-semibold text-white shadow-glow hover:opacity-95 transition-opacity"
-          >
+          <Link to="/contact" className="mt-8 inline-flex items-center gap-2 rounded-md bg-orange-gradient px-7 py-4 text-base font-semibold text-white shadow-glow hover:opacity-95 transition-opacity">
             {t("cta.button")} <ArrowRight className="h-5 w-5" />
           </Link>
         </div>

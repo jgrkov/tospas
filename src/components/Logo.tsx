@@ -1,4 +1,4 @@
-import { Link } from "@tanstack/react-router";
+import { Link } from "react-router-dom";
 
 export function Logo({ variant = "dark" }: { variant?: "dark" | "light" }) {
   const textColor = variant === "light" ? "text-white" : "text-navy";

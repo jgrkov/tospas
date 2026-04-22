@@ -1,4 +1,4 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import { useLanguage } from "@/i18n/LanguageContext";
 import truck1 from "@/assets/truck-1.jpg";
@@ -6,19 +6,7 @@ import truck2 from "@/assets/truck-2.jpg";
 import truck3 from "@/assets/truck-3.jpg";
 import truck4 from "@/assets/truck-4.jpg";
 
-export const Route = createFileRoute("/fleet")({
-  head: () => ({
-    meta: [
-      { title: "Our Fleet — Modern Euro 6 Trucks | Tospas" },
-      { name: "description", content: "Discover the Tospas fleet: Mercedes Actros, refrigerated trailers, curtain-side and ADR tankers. All Euro 6 and GPS-tracked." },
-      { property: "og:title", content: "Tospas Fleet" },
-      { property: "og:description", content: "A modern, well-maintained fleet — every Euro 6, GPS-tracked and serviced in-house." },
-    ],
-  }),
-  component: FleetPage,
-});
-
-function FleetPage() {
+export default function FleetPage() {
   const { t } = useLanguage();
 
   const trucks = [
@@ -42,19 +30,9 @@ function FleetPage() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6">
           <div className="grid gap-6 sm:grid-cols-2">
             {trucks.map((tr, i) => (
-              <article
-                key={i}
-                className="group overflow-hidden rounded-2xl border border-border bg-card shadow-card transition-all hover:-translate-y-1 hover:shadow-elegant"
-              >
+              <article key={i} className="group overflow-hidden rounded-2xl border border-border bg-card shadow-card transition-all hover:-translate-y-1 hover:shadow-elegant">
                 <div className="relative aspect-[4/3] overflow-hidden bg-muted">
-                  <img
-                    src={tr.img}
-                    alt={tr.name}
-                    width={1200}
-                    height={900}
-                    loading="lazy"
-                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
-                  />
+                  <img src={tr.img} alt={tr.name} width={1200} height={900} loading="lazy" className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
                   <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-navy-deep/80 to-transparent" />
                   <div className="absolute bottom-0 left-0 right-0 p-6">
                     <h3 className="font-display text-2xl font-bold text-white">{tr.name}</h3>
@@ -66,10 +44,7 @@ function FleetPage() {
           </div>
 
           <div className="mt-16 text-center">
-            <Link
-              to="/contact"
-              className="inline-flex items-center gap-2 rounded-md bg-navy px-6 py-3.5 text-sm font-semibold text-white shadow-card hover:bg-navy-deep transition-colors"
-            >
+            <Link to="/contact" className="inline-flex items-center gap-2 rounded-md bg-navy px-6 py-3.5 text-sm font-semibold text-white shadow-card hover:bg-navy-deep transition-colors">
               {t("hero.cta_quote")} <ArrowRight className="h-4 w-4" />
             </Link>
           </div>
